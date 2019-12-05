@@ -1,6 +1,6 @@
-# Multi-step build container template for NodeJS applications
+# Multi-step build container template for Node.js applications
 
-This is a simple multi-step NodeJS application docker build template that you can use to create self-contained, relatively small-sized and easily deployable images of your application.
+This is a simple multi-step Node.js application docker build template that you can use to create self-contained, relatively small-sized and easily deployable images of your application.
 
 ## Why multi-step
 
