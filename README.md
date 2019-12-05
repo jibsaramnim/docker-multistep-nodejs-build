@@ -15,13 +15,13 @@ There are several benefits to this, but one of the bigger ones I would say is th
 
 - Assumes you are using Yarn (you need to make some changes if you are using NPM)
 - Assumes your build step can be triggered with `yarn build`
-- Assumes you are using typescript and copies over `tsconfig.json`. Remove that if you are not using TypeScript or this specific file.
+- Assumes you are using typescript and copies over `tsconfig.json`. You can remove this if you are not using TypeScript or this specific file.
 
 There are very few other prerequisites as this is a self-contained image template, but there are a few assumptions that you should be aware of. There are two specific places in the Dockerfile where a specific list of files is copied into the image when building. If your application uses any additional files or folders relevant either when building or when running the application, you will have to update these.
 
 The reason I opted not to copy everything into the image upon building is to avoid possible scenarios where sensitive or (local) development specific files are accidentally copied in. It is safer to rely on a whitelist of sorts, as you'll know for sure what is being copied over.
 
-### What files and folders are copied
+### What files and folders are copied over
 
 - ./src
 - package.json
