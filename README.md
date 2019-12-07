@@ -8,7 +8,7 @@ There are several benefits to this, but one of the bigger ones I would say is th
 
 ## Node versions
 
-- The template uses `node:latest`, but normally I set a specific node version to ensure compatibility with whatever application I am working with/on. You might want to set a specific version in all three phases, or just stick with `latest` if you like.
+- The template uses `node:13`, but be sure to update this to whatever specific version of node your application requires. Make sure to set this accordingly in all three build steps, too.
 - The final stage (which actually runs your application) uses the `node:slim` image, a lighter version that only contains whatever is required to actually run Node. If your application or specific packages used is having issues running in this environment, consider changing the final phase to use `node:alpine` instead. Using the full image here would mean it still will come with tools like NPM and Yarn pre-installed, which is not ideal. Please refer to the [official node image documentation](https://hub.docker.com/_/node/) for more information.
 
 ## Prerequisites

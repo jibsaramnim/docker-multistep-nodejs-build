@@ -1,6 +1,10 @@
-# Step 1: Initial build using the `yarn build` command
-####################################################
-FROM node:latest as build
+#################################################################
+# Step 1: Initial build using the `yarn build` command          #
+#################################################################
+# Note: Make sure the right version of node your application    #
+# requires is set here and in all other build steps.            #
+#################################################################
+FROM node:13 as build
 
 # Prepare the build directory
 RUN mkdir -p /opt/build;
@@ -18,9 +22,13 @@ COPY [ "package.json", "yarn.lock", "tsconfig.json", "./" ]
 RUN yarn install --no-progress && yarn build
 
 
-# Step 2: Fetch production-only dependencies
-####################################################
-FROM node:latest as dependencies
+#################################################################
+# Step 2: Fetch production-only dependencies                    #
+#################################################################
+# Note: Make sure the right version of node your application    #
+# requires is set here and in all other build steps.            #
+#################################################################
+FROM node:13 as dependencies
 
 # Set environment to production
 ENV NODE_ENV='production'
@@ -34,9 +42,13 @@ COPY --from=build [ "/opt/build/package.json", "/opt/build/yarn.lock", "./" ]
 RUN yarn install --production=true --no-progress
 
 
-# Step 3: Build done, create the deployable/runnable image step
-####################################################
-FROM node:slim as release
+#################################################################
+# Step 3: Build done, create the deployable/runnable image step #
+#################################################################
+# Note: Make sure the right version of node your application    #
+# requires is set here and in all other build steps.            #
+#################################################################
+FROM node:13-slim as release
 
 # Set environment to production
 ENV NODE_ENV='production'
